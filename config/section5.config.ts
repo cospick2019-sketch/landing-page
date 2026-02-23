@@ -1,8 +1,8 @@
 export const section5Config = {
   // 섹션 설정
   section: {
-    backgroundColor: "bg-white",
-    paddingY: 120, // 상하 패딩 (px)
+    backgroundColor: "bg-gray-50",
+    paddingY: 120, // 상하 패딩 (px) - overridden by className in component
   },
 
   // 헤딩 설정

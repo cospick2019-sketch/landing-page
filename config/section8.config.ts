@@ -1,6 +1,6 @@
 export const section8Config = {
   section: {
-    backgroundColor: "bg-black",
+    backgroundColor: "bg-white",
   },
 
   copy: {
@@ -25,9 +25,9 @@ export const section8Config = {
   ],
 
   styles: {
-    titleColor: "text-white",
-    questionColor: "text-white",
-    answerColor: "text-neutral-400",
-    borderColor: "border-neutral-800",
+    titleColor: "text-gray-900",
+    questionColor: "text-gray-900",
+    answerColor: "text-gray-700",
+    borderColor: "border-gray-200",
   },
 };

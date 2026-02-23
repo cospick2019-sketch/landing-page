@@ -161,22 +161,21 @@ const Section2 = () => {
   return (
     <section
       ref={sectionRef}
+      id="problem"
       className="relative flex items-center justify-center overflow-hidden"
       style={{
         paddingTop: `${section.paddingTop}px`,
         paddingBottom: `${section.paddingBottom}px`,
-        backgroundImage: `url('${section.backgroundImage}')`,
+        backgroundImage: `url(${section.backgroundImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
       }}
     >
       {/* 메인 컨테이너 */}
       <div
         ref={containerRef}
-        className="relative mx-auto px-4 flex items-center justify-center"
+        className="relative mx-auto flex items-center justify-center w-full"
         style={{
-          width: "100%",
           maxWidth: `${container.maxWidth}px`,
           aspectRatio: container.aspectRatio,
         }}

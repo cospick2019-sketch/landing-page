@@ -1,7 +1,7 @@
 export const section5_1Config = {
   // 섹션 설정
   section: {
-    backgroundColor: "#171717", // neutral-900
+    backgroundColor: "#ffffff", // bg-white
     minHeight: 600,
   },
 
@@ -13,8 +13,8 @@ export const section5_1Config = {
       "이 매출을 만든 그 '설득 공식'과 '유입 공식'을",
       "그대로 대표님 사업에 이식해드립니다.",
     ],
-    mainColor: "#ffffff",
-    subColor: "#a3a3a3", // neutral-400
+    mainColor: "#111827", // gray-900
+    subColor: "#374151", // gray-700
   },
 
   // 버튼 설정

@@ -8,7 +8,7 @@ import { section5Config } from "@/config/section5.config";
 const { section, heading, stats, animation, divider, statItemWidth, marquee } = section5Config;
 
 const MarqueeItem = ({ children }: { children: React.ReactNode }) => (
-  <div className="mx-2 sm:mx-3 md:mx-4 hover:scale-105 cursor-pointer duration-300 ease-in-out">
+  <div className="mx-2 md:mx-4 hover:scale-105 cursor-pointer duration-300 ease-in-out">
     {children}
   </div>
 );
@@ -53,23 +53,22 @@ const Section5 = () => {
 
   return (
     <section
+      id="stats"
       ref={containerRef}
-      className={`${section.backgroundColor} font-['Paperlogy']`}
-      style={{ paddingTop: section.paddingY, paddingBottom: section.paddingY }}
+      className="py-12 md:py-20 bg-gray-50 font-['Paperlogy']"
     >
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
         {/* 헤딩 */}
         <div className="text-center mb-16">
           {/* 서브 카피 */}
           <p
-            className="text-xl md:text-3xl font-medium mb-4 md:mb-6"
-            style={{ color: heading.text1Color }}
+            className="text-base md:text-lg font-medium mb-4 md:mb-6 text-gray-600"
           >
             {heading.text1}
           </p>
           {/* 메인 카피 */}
           <h2
-            className="text-4xl md:text-7xl font-bold leading-tight"
+            className="text-3xl md:text-5xl font-bold leading-tight tracking-tight text-gray-900"
             style={{ color: heading.text2Color }}
           >
             {heading.text2}
@@ -82,7 +81,7 @@ const Section5 = () => {
             <div key={index} className="flex items-center">
               <div className="text-center" style={{ width: statItemWidth }}>
                 {/* 숫자 */}
-                <div className="text-[48px] sm:text-[56px] lg:text-[72px] font-[700] text-neutral-900 mb-4 leading-[1.1]">
+                <div className="text-4xl md:text-6xl font-[700] text-gray-900 mb-4 leading-[1.1]">
                   <NumberTicker
                     from={0}
                     target={stat.value}
@@ -95,7 +94,7 @@ const Section5 = () => {
                   />
                 </div>
                 {/* 라벨 */}
-                <p className="text-neutral-500 text-base sm:text-lg lg:text-xl font-[400] leading-relaxed">
+                <p className="text-gray-500 text-base md:text-lg font-[400] leading-relaxed">
                   {stat.label}
                   <br />
                   {stat.description}
@@ -120,7 +119,7 @@ const Section5 = () => {
 
       {/* 마키 영역 */}
       {marquee.enabled && (
-        <div className="mt-20 space-y-2 sm:space-y-3 md:space-y-4" style={responsiveImageStyle}>
+        <div className="mt-20 space-y-2 md:space-y-4" style={responsiveImageStyle}>
           <SimpleMarquee
             className="w-full"
             baseVelocity={marquee.baseVelocity}

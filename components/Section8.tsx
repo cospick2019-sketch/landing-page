@@ -17,16 +17,17 @@ const Section8 = () => {
 
   return (
     <section
-      className={`${section.backgroundColor} font-['Paperlogy'] py-24 md:py-32`}
+      id="faq"
+      className={`${section.backgroundColor} font-['Paperlogy'] py-12 md:py-20`}
     >
-      <div className="container mx-auto max-w-6xl px-4">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         <h2
-          className={`text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 ${styles.titleColor}`}
+          className={`text-3xl md:text-5xl font-bold leading-tight tracking-tight text-center mb-12 ${styles.titleColor}`}
         >
           {copy.sectionTitle}
         </h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
           {/* 좌측: 아코디언 */}
           <div>
             <Accordion type="single" collapsible className="w-full">
@@ -44,7 +45,7 @@ const Section8 = () => {
                       className={`text-lg md:text-xl font-semibold text-left ${
                         item.id === activeId
                           ? styles.questionColor
-                          : "text-neutral-500"
+                          : "text-gray-500"
                       }`}
                     >
                       {item.question}
@@ -52,13 +53,13 @@ const Section8 = () => {
                   </AccordionTrigger>
                   <AccordionContent>
                     <p
-                      className={`mt-1 text-base md:text-lg leading-relaxed whitespace-pre-line ${styles.answerColor}`}
+                      className={`mt-1 text-base md:text-lg leading-[1.7] whitespace-pre-line ${styles.answerColor}`}
                     >
                       {item.answer}
                     </p>
                     {/* 모바일에서만 이미지 표시 */}
-                    <div className="mt-4 lg:hidden">
-                      <div className="overflow-hidden rounded-lg bg-neutral-900 aspect-[4/3]">
+                    <div className="mt-4 md:hidden">
+                      <div className="overflow-hidden rounded-lg bg-gray-100 aspect-[4/3]">
                         <img
                           src={item.image}
                           alt={item.question}
@@ -76,7 +77,7 @@ const Section8 = () => {
           </div>
 
           {/* 우측: 선택된 항목의 이미지 (데스크탑) */}
-          <div className="relative hidden lg:block m-auto w-full overflow-hidden rounded-l-none rounded-r-xl bg-neutral-900">
+          <div className="relative hidden md:block m-auto w-full overflow-hidden rounded-l-none rounded-r-xl bg-gray-100">
             <img
               src={activeImage}
               alt="Feature preview"
@@ -86,7 +87,7 @@ const Section8 = () => {
               }}
             />
             {/* 이미지 없을 때 placeholder */}
-            <div className="absolute inset-0 flex items-center justify-center text-neutral-600 text-lg -z-10">
+            <div className="absolute inset-0 flex items-center justify-center text-gray-400 text-lg -z-10">
               이미지 준비 중
             </div>
           </div>

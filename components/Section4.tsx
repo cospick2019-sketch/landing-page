@@ -1,40 +1,22 @@
 "use client";
 
-import { useRef } from "react";
-import { useInView } from "motion/react";
 import { FeatureSteps } from "@/components/feature-section";
 import { section4Config } from "@/config/section4.config";
 
 const { copy, autoPlayInterval, features } = section4Config;
 
 const Section4 = () => {
-  const sectionRef = useRef<HTMLElement>(null);
-  const isInView = useInView(sectionRef, { once: false, margin: "-100px" });
-
   return (
     <section
-      ref={sectionRef}
-      className="font-['Paperlogy'] py-20 relative overflow-hidden"
+      id="process"
+      className="py-12 md:py-20 bg-white relative overflow-hidden"
     >
-      {/* 별 배경 */}
-      <div className="section4-stars-container">
-        <div className={`section4-stars ${isInView ? "section4-animate" : "section4-paused"}`}></div>
-        <div className={`section4-stars2 ${isInView ? "section4-animate" : "section4-paused"}`}></div>
-        <div className={`section4-stars3 ${isInView ? "section4-animate" : "section4-paused"}`}></div>
-      </div>
-
-      {/* 커스텀 헤더 */}
-      <div className="text-center mb-10 px-4 relative z-10">
-        <p
-          className="text-lg md:text-xl mb-2"
-          style={{ color: copy.subColor }}
-        >
+      {/* 섹션 헤딩 */}
+      <div className="text-center mb-8 md:mb-12 px-4 md:px-6 relative z-10">
+        <p className="text-sm font-medium text-gray-500">
           {copy.sub}
         </p>
-        <h2
-          className="text-3xl md:text-5xl font-bold"
-          style={{ color: copy.mainColor }}
-        >
+        <h2 className="mt-3 md:mt-4 text-3xl md:text-5xl font-bold leading-tight tracking-tight text-gray-900">
           {copy.main}
         </h2>
       </div>
@@ -44,7 +26,6 @@ const Section4 = () => {
           features={features}
           title=""
           autoPlayInterval={autoPlayInterval}
-          className="text-white"
         />
       </div>
     </section>

@@ -96,13 +96,7 @@ function ScrambleButton() {
     <button
       onClick={openConsult}
       onMouseEnter={scramble}
-      className="px-8 py-4 rounded-full font-semibold text-lg transition-colors shadow-lg"
-      style={{
-        backgroundColor: button.backgroundColor,
-        color: button.textColor,
-      }}
-      onMouseOver={(e) => (e.currentTarget.style.backgroundColor = button.hoverBackgroundColor)}
-      onMouseOut={(e) => (e.currentTarget.style.backgroundColor = button.backgroundColor)}
+      className="bg-[#ec622d] text-white rounded-full h-12 md:h-14 px-8 text-base font-semibold transition-colors shadow-lg hover:bg-[#d55526]"
     >
       {displayText}
     </button>
@@ -112,25 +106,22 @@ function ScrambleButton() {
 const Section5_1 = () => {
   return (
     <div
-      className="min-h-[600px] text-white flex items-center overflow-hidden relative font-['Paperlogy']"
-      style={{
-        backgroundColor: section.backgroundColor,
-        minHeight: section.minHeight,
-      }}
+      id="cta-mid"
+      className="min-h-[600px] flex items-center overflow-hidden relative font-['Paperlogy'] py-12 md:py-20 bg-white"
     >
-      <div className="container mx-auto px-6 lg:px-12 py-20">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
           {/* Left Content */}
           <div className="space-y-6">
             <h3
-              className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight whitespace-pre-line"
+              className="text-3xl md:text-5xl font-bold leading-tight tracking-tight whitespace-pre-line text-gray-900"
               style={{ color: copy.mainColor }}
             >
               {copy.main}
             </h3>
-            <div className="space-y-1" style={{ color: copy.subColor }}>
+            <div className="space-y-1 text-gray-700" style={{ color: copy.subColor }}>
               {copy.sub.map((line, idx) => (
-                <p key={idx} className="text-lg">
+                <p key={idx} className="text-base md:text-lg">
                   {line}
                 </p>
               ))}

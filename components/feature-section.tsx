@@ -47,7 +47,7 @@ export function FeatureSteps({
     <div className={cn("p-8 md:p-12", className)}>
       <div className="max-w-7xl mx-auto w-full">
         {title && (
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-10 text-center">
+          <h2 className="text-3xl md:text-5xl font-bold mb-10 text-center leading-tight tracking-tight text-gray-900">
             {title}
           </h2>
         )}
@@ -66,8 +66,8 @@ export function FeatureSteps({
                   className={cn(
                     "w-8 h-8 md:w-10 md:h-10 rounded-full flex items-center justify-center border-2",
                     index === currentFeature
-                      ? "bg-white border-white text-black scale-110"
-                      : "bg-transparent border-gray-500 text-gray-400",
+                      ? "bg-gray-900 border-gray-900 text-white scale-110"
+                      : "bg-transparent border-gray-300 text-gray-400",
                   )}
                 >
                   {index <= currentFeature ? (
@@ -78,10 +78,10 @@ export function FeatureSteps({
                 </motion.div>
 
                 <div className="flex-1">
-                  <h3 className="text-xl md:text-2xl font-semibold">
+                  <h3 className="text-xl md:text-2xl font-semibold text-gray-900">
                     {feature.title || feature.step}
                   </h3>
-                  <p className="text-sm md:text-lg text-gray-300 whitespace-pre-line">
+                  <p className="text-sm md:text-lg text-gray-700 whitespace-pre-line leading-[1.7]">
                     {feature.content}
                   </p>
                 </div>
@@ -91,7 +91,7 @@ export function FeatureSteps({
 
           <div
             className={cn(
-              "order-1 md:order-2 relative h-[200px] md:h-[300px] lg:h-[400px] overflow-hidden rounded-lg"
+              "order-1 md:order-2 relative h-[200px] md:h-[400px] overflow-hidden rounded-lg"
             )}
           >
             <AnimatePresence mode="wait">

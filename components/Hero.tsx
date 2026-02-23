@@ -1,20 +1,29 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { heroConfig } from "@/config/hero.config";
 import { headerConfig } from "@/config/header.config";
 import { useConsultModal } from "@/components/ConsultModal";
 
 const Hero = () => {
-  const { text, spacing, fontSize, fontWeight, underline } = heroConfig;
+  const { text, underline } = heroConfig;
   const { open: openConsult } = useConsultModal();
-  const { logo, navigation, style } = headerConfig;
+  const { logo, navigation, cta, style } = headerConfig;
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > style.scrollThreshold);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [style.scrollThreshold]);
 
   return (
-    <section className="relative h-screen font-['Paperlogy']">
-      {/* 배경 컨테이너 - clip으로 섹션 내에서만 보이도록 */}
+    <section id="hero" className="relative min-h-svh">
+      {/* 배경 컨테이너 */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* 배경 영상 */}
         <video
           autoPlay
           muted
@@ -24,96 +33,131 @@ const Hero = () => {
         >
           <source src="/hero-section-video.mp4" type="video/mp4" />
         </video>
-
-        {/* 어두운 오버레이 */}
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
-      {/* 헤더/네비게이션 */}
-      <header
-        className="fixed top-0 left-0 right-0 z-50 bg-[#ec622d]"
-      >
-        <div className={`max-w-7xl mx-auto px-6 py-5 flex items-center justify-between ${style.height}`}>
-          {/* 로고 */}
-          <div className="flex items-center h-full">
-            <img
-              src={logo.src}
-              alt={logo.alt}
-              className={`${logo.height} w-auto object-contain`}
-            />
-          </div>
 
-          {/* 네비게이션 */}
-          <nav className={`hidden md:flex items-center ${style.navGap} h-full`}>
+      {/* 헤더/네비게이션 - 글래스모피즘 */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 h-14 md:h-16 transition-all duration-300 ${
+          scrolled
+            ? "bg-white/80 backdrop-blur-md border-b border-white/20"
+            : "bg-transparent"
+        }`}
+      >
+        <div className="relative h-full max-w-7xl mx-auto px-4 md:px-6 flex items-center">
+          {/* 좌측: 로고 */}
+          <a href="/" className="flex-shrink-0">
+            <img
+              src={scrolled ? logo.srcScrolled : logo.src}
+              alt={logo.alt}
+              className={`${logo.height} w-auto object-contain transition-all duration-300`}
+            />
+          </a>
+
+          {/* 중앙: 네비게이션 (뷰포트 정중앙) */}
+          <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8">
             {navigation.map((item, index) => (
               <a
                 key={index}
                 href={item.href}
-                className={`${style.textColor} ${style.textColorHover} transition-colors ${style.navFontSize} ${style.navFontWeight}`}
+                className={`text-sm font-medium transition-colors duration-150 ${
+                  scrolled
+                    ? "text-gray-600 hover:text-gray-900"
+                    : "text-white/90 hover:text-white"
+                }`}
               >
                 {item.label}
               </a>
             ))}
           </nav>
+
+          {/* 우측: CTA 버튼 */}
+          <button
+            onClick={openConsult}
+            className={`hidden md:inline-flex ml-auto items-center h-10 px-4 text-sm font-medium rounded-full transition-colors duration-150 ${
+              scrolled
+                ? "bg-gray-900 text-white hover:bg-gray-800"
+                : "bg-white text-gray-900 hover:bg-gray-100"
+            }`}
+          >
+            {cta.label}
+          </button>
+
+          {/* 모바일: 햄버거 */}
+          <button className="md:hidden ml-auto p-2" aria-label="메뉴 열기">
+            <svg
+              className={`w-6 h-6 transition-colors duration-150 ${
+                scrolled ? "text-gray-900" : "text-white"
+              }`}
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
         </div>
       </header>
 
       {/* 메인 컨텐츠 */}
-      <div className="relative z-[2] max-w-7xl mx-auto px-6 h-screen flex items-center pt-[80px]">
-        <div className="w-full">
-          {/* 텍스트 영역 */}
-          <div className="text-white">
-            {/* 서브 타이틀 */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className={`text-white ${fontSize.subTitle} ${spacing.subTitleMarginBottom}`}
-            >
-              <span className={fontWeight.subTitlePrefix}>{text.subTitle.prefix}</span>
-              <span className={fontWeight.subTitleSuffix}> {text.subTitle.suffix}</span>
-            </motion.p>
+      <div className="relative z-[2] max-w-7xl mx-auto px-4 md:px-6 min-h-svh flex items-center justify-center">
+        <div className="w-full text-center">
+          {/* 아이브라우 */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-base md:text-lg font-normal text-gray-300"
+          >
+            <span>{text.eyebrow.prefix}</span>
+            <span className="font-semibold"> {text.eyebrow.suffix}</span>
+          </motion.p>
 
-            {/* 메인 헤드라인 */}
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.7, delay: 0.1 }}
-              className={`${fontSize.headline} ${spacing.headlineLeading} ${spacing.headlineMarginBottom} text-white`}
-            >
-              <span className={fontWeight.headlineNormal}>{text.headline.line1.prefix}</span>
-              <br />
-              <span className={`${fontWeight.headlineStrong} text-[#ec622d]`}>{text.headline.line2}</span>
-            </motion.h1>
+          {/* 메인 헤드라인 H1 */}
+          <motion.h1
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="mt-3 md:mt-4 text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-white"
+          >
+            <span>{text.headline.line1}</span>
+            <br />
+            <span>{text.headline.line2}</span>
+          </motion.h1>
 
-            {/* 서브 카피 */}
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              className={`text-white ${fontSize.subCopy} ${spacing.subCopyMarginBottom} ${spacing.subCopyLeading} max-w-lg`}
-            >
-              <span className={fontWeight.subCopyLine1}>{text.subCopy.line1}</span>
-              <br />
-              <span className={fontWeight.subCopyLine2}>{text.subCopy.line2.prefix}</span>
-              <span className={`${fontWeight.subCopyLine2} ${underline.style}`}>{text.subCopy.line2.highlight}</span>
-              <br />
-              <span className={fontWeight.subCopyLine3Prefix}>{text.subCopy.line3.prefix}</span>
-              <span className={fontWeight.subCopyLine3Highlight}>{text.subCopy.line3.highlight}</span>
-            </motion.p>
+          {/* 히어로 리드 텍스트 */}
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+            className="mt-3 md:mt-4 text-base md:text-lg font-normal leading-[1.7] text-gray-300 max-w-xl mx-auto"
+          >
+            <span>{text.lead.line1}</span>
+            <br />
+            <span>{text.lead.line2.prefix}</span>
+            <span className={underline.style}>{text.lead.line2.highlight}</span>
+            <br />
+            <span>{text.lead.line3.prefix}</span>
+            <span className={`font-semibold ${underline.style}`}>{text.lead.line3.highlight}</span>
+          </motion.p>
 
-            {/* CTA 버튼 */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.5 }}
+          {/* CTA 버튼 - Large Primary + Glow Effect */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="mt-6 md:mt-8 relative group inline-block"
+          >
+            <div className="absolute inset-0 -m-2 rounded-full bg-white/30 opacity-50 blur-xl transition-all group-hover:opacity-70 group-hover:blur-2xl"></div>
+            <button
+              onClick={openConsult}
+              className="relative z-10 inline-flex items-center justify-center h-12 md:h-14 px-8 text-base font-semibold bg-white text-gray-900 rounded-full hover:bg-white/90 transition-all shadow-2xl gap-3"
             >
-              <button onClick={openConsult} className={`group bg-white text-[#ec622d] ${spacing.ctaButtonPadding} rounded-full font-bold ${fontSize.ctaButton} transition-all duration-300 hover:bg-[#ec622d] hover:text-white flex items-center gap-3`}>
-                <span className="transition-transform duration-300 group-hover:scale-110">{text.ctaButton.text}</span>
-                <span className="transition-transform duration-300 group-hover:translate-x-1">{text.ctaButton.arrow}</span>
-              </button>
-            </motion.div>
-          </div>
-
+              <span>{text.ctaButton.text}</span>
+              <span>{text.ctaButton.arrow}</span>
+            </button>
+          </motion.div>
         </div>
       </div>
 
@@ -136,7 +180,7 @@ const Hero = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5, delay: 1.2 }}
-        className="fixed bottom-8 left-1/2 -translate-x-1/2 z-40"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
       >
         <motion.div
           animate={{ y: [0, 8, 0] }}
@@ -153,7 +197,6 @@ const Hero = () => {
           </div>
         </motion.div>
       </motion.div>
-
     </section>
   );
 };

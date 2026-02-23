@@ -22,14 +22,10 @@ const Section3 = () => {
 
   return (
     <section
-      className="relative overflow-hidden font-['Paperlogy']"
-      style={{
-        backgroundColor: section.backgroundColor,
-        paddingTop: section.paddingTop,
-        paddingBottom: section.paddingBottom
-      }}
+      id="comparison"
+      className="relative overflow-hidden py-12 md:py-20 bg-gray-50"
     >
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* 헤드라인 */}
         <div className="text-center mb-16 md:mb-24">
           <motion.h2
@@ -37,17 +33,17 @@ const Section3 = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 whitespace-pre-wrap leading-tight"
+            className="text-3xl md:text-5xl font-bold text-gray-900 mb-6 whitespace-pre-wrap leading-tight tracking-tight"
           >
             {headline.main}
           </motion.h2>
         </div>
 
         {/* 비교 레이아웃 */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 items-center relative">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center relative">
 
           {/* VS 뱃지 (데스크탑 중앙, 모바일 사이) */}
-          <div className="hidden lg:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-[#ec622d] rounded-full items-center justify-center z-10 text-white font-bold text-xl shadow-lg">
+          <div className="hidden md:flex absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-16 h-16 bg-[#ec622d] rounded-full items-center justify-center z-10 text-white font-bold text-xl shadow-lg">
             VS
           </div>
 
@@ -81,7 +77,7 @@ const Section3 = () => {
           </motion.div>
 
           {/* 모바일용 VS */}
-          <div className="flex lg:hidden justify-center items-center -my-4 z-10">
+          <div className="flex md:hidden justify-center items-center -my-4 z-10">
             <div className="w-12 h-12 bg-[#ec622d] rounded-full flex items-center justify-center text-white font-bold shadow-lg">VS</div>
           </div>
 

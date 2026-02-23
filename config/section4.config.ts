@@ -1,15 +1,13 @@
 export const section4Config = {
   // 섹션 설정
   section: {
-    backgroundColor: "#0a0a0a",
+    backgroundColor: "bg-white",
   },
 
   // 카피 설정
   copy: {
     sub: "페이지 제작이 끝이 아닙니다.",
     main: "결국 매출이 목적 아닌가요?",
-    subColor: "#9ca3af",
-    mainColor: "#ffffff",
   },
 
   // 자동 재생 간격 (ms)

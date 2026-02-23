@@ -84,19 +84,19 @@ function ConsultForm({ onClose }: { onClose: () => void }) {
 
       {/* 폼 컨테이너 */}
       <div
-        className="relative w-full max-w-md rounded-2xl border border-neutral-700 bg-[#111] p-8 shadow-2xl font-['Paperlogy']"
+        className="relative w-full max-w-md rounded-2xl border border-gray-200 bg-white p-8 shadow-2xl font-['Paperlogy']"
         onClick={(e) => e.stopPropagation()}
       >
         {/* 닫기 버튼 */}
         <button
           onClick={onClose}
-          className="absolute right-4 top-4 text-neutral-400 hover:text-white transition-colors text-2xl leading-none"
+          className="absolute right-4 top-4 text-gray-400 hover:text-gray-900 transition-colors text-2xl leading-none"
         >
           ✕
         </button>
 
-        <h3 className="text-2xl font-bold text-white mb-1">무료 상담 신청</h3>
-        <p className="text-neutral-400 text-sm mb-6">
+        <h3 className="text-2xl font-bold text-gray-900 mb-1">무료 상담 신청</h3>
+        <p className="text-gray-500 text-sm mb-6">
           아래 정보를 남겨주시면 빠르게 연락드리겠습니다.
         </p>
 
@@ -111,11 +111,11 @@ function ConsultForm({ onClose }: { onClose: () => void }) {
               id="consult-name"
               value={formData.name}
               onChange={handleChange}
-              className="w-full rounded-lg border border-neutral-700 bg-transparent px-4 py-3 text-white text-base outline-none transition-colors focus:border-[#ec622d] peer"
+              className="w-full rounded-lg border border-gray-300 bg-transparent px-4 py-3 text-gray-900 text-base outline-none transition-colors focus:border-[#ec622d] peer"
             />
             <label
               htmlFor="consult-name"
-              className="pointer-events-none absolute left-4 top-3 text-neutral-500 transition-all duration-300 peer-focus:-top-2.5 peer-focus:left-3 peer-focus:scale-[0.8] peer-focus:bg-[#111] peer-focus:px-1.5 peer-focus:text-[#ec622d] peer-focus:font-bold peer-valid:-top-2.5 peer-valid:left-3 peer-valid:scale-[0.8] peer-valid:bg-[#111] peer-valid:px-1.5 peer-valid:text-[#ec622d] peer-valid:font-bold"
+              className="pointer-events-none absolute left-4 top-3 text-gray-500 transition-all duration-300 peer-focus:-top-2.5 peer-focus:left-3 peer-focus:scale-[0.8] peer-focus:bg-white peer-focus:px-1.5 peer-focus:text-[#ec622d] peer-focus:font-bold peer-valid:-top-2.5 peer-valid:left-3 peer-valid:scale-[0.8] peer-valid:bg-white peer-valid:px-1.5 peer-valid:text-[#ec622d] peer-valid:font-bold"
             >
               이름 *
             </label>
@@ -131,11 +131,11 @@ function ConsultForm({ onClose }: { onClose: () => void }) {
               id="consult-phone"
               value={formData.phone}
               onChange={handleChange}
-              className="w-full rounded-lg border border-neutral-700 bg-transparent px-4 py-3 text-white text-base outline-none transition-colors focus:border-[#ec622d] peer"
+              className="w-full rounded-lg border border-gray-300 bg-transparent px-4 py-3 text-gray-900 text-base outline-none transition-colors focus:border-[#ec622d] peer"
             />
             <label
               htmlFor="consult-phone"
-              className="pointer-events-none absolute left-4 top-3 text-neutral-500 transition-all duration-300 peer-focus:-top-2.5 peer-focus:left-3 peer-focus:scale-[0.8] peer-focus:bg-[#111] peer-focus:px-1.5 peer-focus:text-[#ec622d] peer-focus:font-bold peer-valid:-top-2.5 peer-valid:left-3 peer-valid:scale-[0.8] peer-valid:bg-[#111] peer-valid:px-1.5 peer-valid:text-[#ec622d] peer-valid:font-bold"
+              className="pointer-events-none absolute left-4 top-3 text-gray-500 transition-all duration-300 peer-focus:-top-2.5 peer-focus:left-3 peer-focus:scale-[0.8] peer-focus:bg-white peer-focus:px-1.5 peer-focus:text-[#ec622d] peer-focus:font-bold peer-valid:-top-2.5 peer-valid:left-3 peer-valid:scale-[0.8] peer-valid:bg-white peer-valid:px-1.5 peer-valid:text-[#ec622d] peer-valid:font-bold"
             >
               연락처 *
             </label>
@@ -147,18 +147,18 @@ function ConsultForm({ onClose }: { onClose: () => void }) {
               name="industry"
               value={formData.industry}
               onChange={handleChange}
-              className="w-full appearance-none rounded-lg border border-neutral-700 bg-transparent px-4 py-3 text-white text-base outline-none transition-colors focus:border-[#ec622d] cursor-pointer"
+              className="w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-4 py-3 text-gray-900 text-base outline-none transition-colors focus:border-[#ec622d] cursor-pointer"
             >
-              <option value="" disabled className="bg-[#111] text-neutral-500">
+              <option value="" disabled className="bg-white text-gray-500">
                 업종 선택
               </option>
               {industries.map((item) => (
-                <option key={item} value={item} className="bg-[#111] text-white">
+                <option key={item} value={item} className="bg-white text-gray-900">
                   {item}
                 </option>
               ))}
             </select>
-            <span className="pointer-events-none absolute right-4 top-3.5 text-neutral-500">
+            <span className="pointer-events-none absolute right-4 top-3.5 text-gray-500">
               ▾
             </span>
           </div>
@@ -169,18 +169,18 @@ function ConsultForm({ onClose }: { onClose: () => void }) {
               name="budget"
               value={formData.budget}
               onChange={handleChange}
-              className="w-full appearance-none rounded-lg border border-neutral-700 bg-transparent px-4 py-3 text-white text-base outline-none transition-colors focus:border-[#ec622d] cursor-pointer"
+              className="w-full appearance-none rounded-lg border border-gray-300 bg-transparent px-4 py-3 text-gray-900 text-base outline-none transition-colors focus:border-[#ec622d] cursor-pointer"
             >
-              <option value="" disabled className="bg-[#111] text-neutral-500">
+              <option value="" disabled className="bg-white text-gray-500">
                 월 광고 예산
               </option>
               {budgets.map((item) => (
-                <option key={item} value={item} className="bg-[#111] text-white">
+                <option key={item} value={item} className="bg-white text-gray-900">
                   {item}
                 </option>
               ))}
             </select>
-            <span className="pointer-events-none absolute right-4 top-3.5 text-neutral-500">
+            <span className="pointer-events-none absolute right-4 top-3.5 text-gray-500">
               ▾
             </span>
           </div>
@@ -193,12 +193,12 @@ function ConsultForm({ onClose }: { onClose: () => void }) {
               rows={3}
               value={formData.message}
               onChange={handleChange}
-              className="w-full rounded-lg border border-neutral-700 bg-transparent px-4 py-3 text-white text-base outline-none transition-colors focus:border-[#ec622d] resize-none peer"
+              className="w-full rounded-lg border border-gray-300 bg-transparent px-4 py-3 text-gray-900 text-base outline-none transition-colors focus:border-[#ec622d] resize-none peer"
               placeholder=" "
             />
             <label
               htmlFor="consult-message"
-              className="pointer-events-none absolute left-4 top-3 text-neutral-500 transition-all duration-300 peer-focus:-top-2.5 peer-focus:left-3 peer-focus:scale-[0.8] peer-focus:bg-[#111] peer-focus:px-1.5 peer-focus:text-[#ec622d] peer-focus:font-bold peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:scale-[0.8] peer-[:not(:placeholder-shown)]:bg-[#111] peer-[:not(:placeholder-shown)]:px-1.5 peer-[:not(:placeholder-shown)]:text-[#ec622d] peer-[:not(:placeholder-shown)]:font-bold"
+              className="pointer-events-none absolute left-4 top-3 text-gray-500 transition-all duration-300 peer-focus:-top-2.5 peer-focus:left-3 peer-focus:scale-[0.8] peer-focus:bg-white peer-focus:px-1.5 peer-focus:text-[#ec622d] peer-focus:font-bold peer-[:not(:placeholder-shown)]:-top-2.5 peer-[:not(:placeholder-shown)]:left-3 peer-[:not(:placeholder-shown)]:scale-[0.8] peer-[:not(:placeholder-shown)]:bg-white peer-[:not(:placeholder-shown)]:px-1.5 peer-[:not(:placeholder-shown)]:text-[#ec622d] peer-[:not(:placeholder-shown)]:font-bold"
             >
               문의사항 (선택)
             </label>

@@ -12,22 +12,22 @@ const { section, copy, video, animation, styles } = section7_1Config;
 
 const Section7_1 = () => {
   return (
-    <section className={`${section.backgroundColor} font-['Paperlogy'] pt-[80px] min-h-[100vh]`}>
+    <section id="video" className={`${section.backgroundColor} font-['Paperlogy'] min-h-[100vh]`}>
       <ContainerScroll className="pb-[30%]">
         {/* 텍스트 영역 */}
         <ContainerStagger className="flex flex-col items-center justify-center text-center px-4 mb-8">
           <ContainerAnimated animation="blur">
-            <p className={`text-lg md:text-xl lg:text-2xl mb-1 ${styles.descriptionColor}`}>
+            <p className={`text-base md:text-lg mb-1 ${styles.descriptionColor}`}>
               {copy.subTitle}
             </p>
           </ContainerAnimated>
           <ContainerAnimated animation="blur">
-            <h2 className={`text-4xl md:text-5xl lg:text-6xl font-bold mb-4 ${styles.mainTitleColor}`}>
+            <h2 className={`text-3xl md:text-5xl font-bold leading-tight tracking-tight mb-4 ${styles.mainTitleColor}`}>
               {copy.mainTitle}
             </h2>
           </ContainerAnimated>
           <ContainerAnimated animation="blur" className="max-w-3xl">
-            <p className={`text-sm md:text-base lg:text-lg leading-relaxed ${styles.descriptionColor}`}>
+            <p className={`text-base md:text-lg leading-[1.7] ${styles.descriptionColor}`}>
               {copy.description.map((line, index) => (
                 <span key={index}>
                   {line}

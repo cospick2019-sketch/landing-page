@@ -1,10 +1,10 @@
 export const section6Config = {
   // 섹션 설정
   section: {
-    backgroundColor: "#ffffff",
+    backgroundColor: "bg-gray-50",
     paddingY: {
-      mobile: 64, // py-16
-      desktop: 96, // py-24
+      mobile: 48, // py-12
+      desktop: 80, // py-20
     },
   },
 
@@ -17,9 +17,9 @@ export const section6Config = {
     },
     subtitle:
       "저에게 의뢰하는 건 비용(Cost)이 아니라 투자(Investment)입니다.\n실패 시 리스크는 제가 집니다. 대표님은 성공의 열매만 가져가세요.\n(단, 단순 변심 제외, 기획 및 마케팅 패키지 진행 시 기준 협의)",
-    titleColor: "#171717", // neutral-900
+    titleColor: "#111827", // gray-900
     highlightColor: "#EC622D", // brand orange
-    subtitleColor: "#737373", // neutral-500
+    subtitleColor: "#4B5563", // gray-600
   },
 
   // 성공 사례 카드 설정

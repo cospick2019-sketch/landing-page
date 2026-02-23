@@ -26,23 +26,19 @@ const STAGGER_CONTAINER_VARIANTS: Variants = {
 const Section6 = () => {
   return (
     <motion.section
+      id="guarantee"
       initial="hidden"
       whileInView="show"
       viewport={{ once: true, margin: "-100px" }}
       variants={STAGGER_CONTAINER_VARIANTS}
-      className="font-['Paperlogy']"
-      style={{
-        backgroundColor: section.backgroundColor,
-        paddingTop: section.paddingY.desktop,
-        paddingBottom: section.paddingY.desktop,
-      }}
+      className="py-12 md:py-20 bg-gray-50 font-['Paperlogy']"
     >
-      <div className="container mx-auto max-w-6xl px-4">
+      <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
         {/* 타이틀 영역 */}
         <div className="mx-auto max-w-3xl text-center">
           <motion.h2
             variants={FADE_UP_VARIANTS}
-            className="text-3xl font-bold tracking-tight sm:text-5xl"
+            className="text-3xl md:text-5xl font-bold leading-tight tracking-tight text-gray-900"
             style={{ color: copy.titleColor }}
           >
             {copy.title.line1}
@@ -53,7 +49,7 @@ const Section6 = () => {
 
           <motion.p
             variants={FADE_UP_VARIANTS}
-            className="mt-6 text-lg leading-8 whitespace-pre-line"
+            className="mt-6 text-base md:text-lg leading-[1.7] whitespace-pre-line text-gray-600"
             style={{ color: copy.subtitleColor }}
           >
             {copy.subtitle}
@@ -63,7 +59,7 @@ const Section6 = () => {
         {/* 피처 카드 그리드 */}
         <motion.div
           variants={STAGGER_CONTAINER_VARIANTS}
-          className="mt-16 grid grid-cols-1 gap-6 sm:mt-24 md:grid-cols-3"
+          className="mt-16 grid grid-cols-1 gap-6 md:mt-24 md:grid-cols-3"
         >
           {features.map((feature) => (
             <motion.a
@@ -75,7 +71,7 @@ const Section6 = () => {
               transition={{ type: "spring", stiffness: 300 }}
               className="block"
             >
-              <Card className="group h-full overflow-hidden rounded-xl border-0 bg-neutral-100 shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-md">
+              <Card className="group h-full overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm transition-shadow duration-300 ease-in-out hover:shadow-md">
                 {/* 카드 이미지 */}
                 <div className="overflow-hidden">
                   <img
@@ -88,11 +84,11 @@ const Section6 = () => {
                 {/* 카드 콘텐츠 */}
                 <div className="p-6">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold text-neutral-900">
+                    <h3 className="text-xl md:text-2xl font-semibold text-gray-900">
                       {feature.title}
                     </h3>
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-neutral-200/50 transition-colors duration-300 group-hover:bg-neutral-200">
-                      <ArrowRight className="h-5 w-5 text-neutral-500 transition-transform duration-300 group-hover:translate-x-1" />
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 transition-colors duration-300 group-hover:bg-gray-200">
+                      <ArrowRight className="h-5 w-5 text-gray-500 transition-transform duration-300 group-hover:translate-x-1" />
                     </div>
                   </div>
                 </div>

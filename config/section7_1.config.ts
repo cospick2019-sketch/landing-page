@@ -1,7 +1,7 @@
 export const section7_1Config = {
   // 섹션 설정
   section: {
-    backgroundColor: "bg-black",
+    backgroundColor: "bg-gray-900",
   },
 
   // 카피 설정
@@ -33,6 +33,6 @@ export const section7_1Config = {
   // 스타일 설정
   styles: {
     mainTitleColor: "text-white",
-    descriptionColor: "text-neutral-400",
+    descriptionColor: "text-gray-300",
   },
 };
