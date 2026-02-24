@@ -18,7 +18,7 @@ export const headerConfig = {
   navigation: [
     { label: "서비스 소개", href: "#service" },
     { label: "포트폴리오", href: "#portfolio" },
-    { label: "가격 안내", href: "#price" },
+    { label: "가격 안내", href: "/pricing" },
     { label: "자주 묻는 질문", href: "#faq" },
   ],
 

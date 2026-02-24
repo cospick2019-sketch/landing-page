@@ -1,24 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { heroConfig } from "@/config/hero.config";
-import { headerConfig } from "@/config/header.config";
 import { useConsultModal } from "@/components/ConsultModal";
+import Header from "@/components/Header";
 
 const Hero = () => {
   const { text, underline } = heroConfig;
   const { open: openConsult } = useConsultModal();
-  const { logo, navigation, cta, style } = headerConfig;
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > style.scrollThreshold);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [style.scrollThreshold]);
 
   return (
     <section id="hero" className="relative min-h-svh">
@@ -37,68 +26,7 @@ const Hero = () => {
       </div>
 
       {/* 헤더/네비게이션 - 글래스모피즘 */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 h-14 md:h-16 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/80 backdrop-blur-md border-b border-white/20"
-            : "bg-transparent"
-        }`}
-      >
-        <div className="relative h-full max-w-7xl mx-auto px-4 md:px-6 flex items-center">
-          {/* 좌측: 로고 */}
-          <a href="/" className="flex-shrink-0">
-            <img
-              src={scrolled ? logo.srcScrolled : logo.src}
-              alt={logo.alt}
-              className={`${logo.height} w-auto object-contain transition-all duration-300`}
-            />
-          </a>
-
-          {/* 중앙: 네비게이션 (뷰포트 정중앙) */}
-          <nav className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8">
-            {navigation.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                className={`text-sm font-medium transition-colors duration-150 ${
-                  scrolled
-                    ? "text-gray-600 hover:text-gray-900"
-                    : "text-white/90 hover:text-white"
-                }`}
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* 우측: CTA 버튼 */}
-          <button
-            onClick={openConsult}
-            className={`hidden md:inline-flex ml-auto items-center h-10 px-4 text-sm font-medium rounded-full transition-colors duration-150 ${
-              scrolled
-                ? "bg-gray-900 text-white hover:bg-gray-800"
-                : "bg-white text-gray-900 hover:bg-gray-100"
-            }`}
-          >
-            {cta.label}
-          </button>
-
-          {/* 모바일: 햄버거 */}
-          <button className="md:hidden ml-auto p-2" aria-label="메뉴 열기">
-            <svg
-              className={`w-6 h-6 transition-colors duration-150 ${
-                scrolled ? "text-gray-900" : "text-white"
-              }`}
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
-        </div>
-      </header>
+      <Header />
 
       {/* 메인 컨텐츠 */}
       <div className="relative z-[2] max-w-7xl mx-auto px-4 md:px-6 min-h-svh flex items-center justify-center">
